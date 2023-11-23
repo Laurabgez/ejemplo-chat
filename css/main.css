@@ -1,0 +1,189 @@
+:root {
+    --color-black: #1d1e21;
+    --color-white: #FFF;
+    --color-background: #e8e8e8;
+    --color-green:  #43b72A;
+
+    /* Fonts */
+    --font-body: Arial;
+
+    /* Gaps */
+    --gap-s: 0.9rem;
+    --gap-m: 1rem;
+    --gap-l: 1.5rem;
+    --gap-xl: 2rem;
+    --gap-xxl: 3rem;
+
+}
+
+/*animaciones*/
+@keyframes ani-pulse {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/*generales*/
+
+body {
+    font-family: var(--font-body);
+    background-color: yellow;
+
+}
+/*componentes*/
+
+.button {
+    background: initial;
+    border: 0;
+    display: inline-block;
+    padding:var(--gap-s);
+    min-width: var(--gap-l);
+}
+
+/*chat*/
+
+
+.chat {
+    width: 20rem;
+    position: fixed;
+    bottom:0;
+    right: var(--gap-xxl);
+    background-color: var(--color-white);
+    border-top-left-radius: var(--gap-l);
+    border-top-right-radius: var(--gap-l);
+    .chat__header {
+        background: var(--color-black);
+        color: var(--color-white);
+        border-top-left-radius: var(--gap-l);
+        border-top-right-radius: var(--gap-l);
+        padding: var(--gap-m);
+        box-sizing: border-box;
+        position: relative;
+        &::before {
+            content:"";
+            position:absolute;
+            bottom:-2rem;
+            left:0;
+            right: 0;
+            height:2rem;
+            background-image:linear-gradient(gray,transparent);
+            z-index: 10;
+        }
+    }
+
+    .chat__name {
+        margin:0;
+        font-size: var(--gap-l);
+        font-weight: normal;
+        margin-bottom: .4rem
+    }
+
+    .chat__status {
+        margin:0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover{
+            white-space: initial;
+            overflow: initial;
+            text-overflow: initial;
+        }
+    }
+
+    .chat__close{
+        display: block;
+        margin-left: auto;
+    }
+
+    .chat__led {
+        --size:0.6rem;
+        display: inline-block;
+        width: var(--size);
+        height: var(--size);
+        border-radius:50%;
+        background: var(--color-green);
+        animation-name: ani-pulse;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+
+    .chat__messages {
+        height: 20rem;
+        overflow-y: auto;
+        padding-inline:var(--gap-s);
+        position: relative;
+
+    }
+    .message{
+        width: 14rem;
+        background-color: lightgoldenrodyellow;
+        padding: var(--gap-m);
+        margin-block: var(--gap-l);
+        border-radius: var(--gap-s);
+        position: relative;
+        margin-left: auto;
+        &::before {
+            display: block;
+            --lado:0rem;
+            content:"";
+            width: var(--lado);
+            height: var(--lado);
+            position:absolute;
+            bottom: -12px;
+            right: 0px;
+            transform: rotate(88deg);
+            border:1rem  solid lightgoldenrodyellow;
+            border-left-color:transparent;
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .message__username {
+            font-weight: bold;
+            margin:0;
+            font-size: var(--gap-m);
+
+        }
+
+        .message__text {
+            margin:0;
+            margin-top: var(--gap-s);
+            font-size: var(--gap-s)
+        }
+
+    }
+    .message--receptor {
+        margin-left:initial;
+        background-color: navajowhite;
+        &::before {
+            border:1rem  solid navajowhite;
+            border-left-color:transparent;
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+            left: 0;
+            transform: rotate(275deg);
+        }
+    }
+    .chat__footer {
+        .chat__form {
+            display: flex;
+        }
+        .chat__input {
+            width: 100%;
+            padding: var(--gap-s);
+            border:0;
+            background-color: initial;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+
